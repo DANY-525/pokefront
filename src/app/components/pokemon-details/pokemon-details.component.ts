@@ -20,11 +20,9 @@ export class PokemonDetailsComponent {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const pok = params;
-
         this.name = pok['name']
         this.url = pok['url'];
-   
-      this.getDetail();
+       this.getDetail();
     });
 
   }

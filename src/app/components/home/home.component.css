@@ -48,3 +48,19 @@
     color: #fff;
     border-color: #007bff;
   }
+
+
+  .heart-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .feather-heart {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .active {
+    fill: red;
+  }

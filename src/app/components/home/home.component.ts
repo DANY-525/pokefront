@@ -17,13 +17,13 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 })
 export class HomeComponent {
 
-  
+  heartActive: boolean = false;
   //totalPages: number;
   pokemonsList:any=[];
   displayedPokemons: any[] = [];
   currentPage = 1;
   pageSize = 10; 
-  activeTab: string = 'home';
+ 
 
  
   constructor(private pokemones: LoginService,private router:Router,private route: ActivatedRoute,private auth:AuthenticationServiceService) {
@@ -32,16 +32,11 @@ export class HomeComponent {
    detailPage(id:any){
     this.router.navigate(['/details', id]);
    }
-  setActiveTab(tab: string): void {
-    if(tab == "close"){
-        this.auth.clearToken();
-       this.router.navigate(['/']);
-    }
-    if(tab == "home"){
-       this.router.navigate(['/home']);
-    }
-    this.activeTab = tab;
+
+   toggleHeart() {
+    this.heartActive = !this.heartActive;
   }
+
  getPokemones(){
 
         this.pokemones.getPokemon().subscribe(
