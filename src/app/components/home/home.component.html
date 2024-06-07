@@ -1,10 +1,6 @@
 
 
-<div class="navigation-tab">
-  <button class="tab" [class.active]="activeTab === 'home'" (click)="setActiveTab('home')">Home</button>
-  <button class="tab" [class.active]="activeTab === 'favorites'" (click)="setActiveTab('favorites')">Favorites</button>
-  <button class="tab" [class.active]="activeTab === 'close'" (click)="setActiveTab('close')">Close</button>
-</div>
+<app-nav-bar></app-nav-bar>
 
 
 <div class="pokemon-list">
@@ -12,9 +8,8 @@
     <ul>
         <li *ngFor="let pokemon of displayedPokemons">
           <img [src]="getPokemonImageUrl(pokemon.url)" alt="{{ pokemon.name }}">
-          <button (click)="detailPage(pokemon.url)">{{ pokemon.name }}</button>
-      
-         
+          <button (click)="detailPage(pokemon)">{{ pokemon.name }}</button>
+        
         </li>
       </ul>
     <div class="pagination">

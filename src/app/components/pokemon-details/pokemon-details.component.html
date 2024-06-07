@@ -1,1 +1,20 @@
-<p>pokemon-details works!</p>
+
+
+
+<app-nav-bar></app-nav-bar>
+<div class="pokemon-card">
+    <img [src]="pokemonDetails.sprites.front_default" alt="Pokemon Image">
+    <h2>{{ pokemonDetails.name }}</h2>
+    <p>ID: {{ pokemonDetails.id }}</p>
+    <p>Weight: {{ pokemonDetails.weight }}</p>
+    <p>Height: {{ pokemonDetails.height }}</p>
+    <p>Abilities:</p>
+    <ul>
+      <li *ngFor="let ability of pokemonDetails.abilities">{{ ability.ability.name }}</li>
+    </ul>
+
+    <p>Evolutions:</p>
+    <ul>
+      <li *ngFor="let evolution of pokemonEvolutions">{{ evolution.species.name }}</li>
+    </ul>
+  </div>

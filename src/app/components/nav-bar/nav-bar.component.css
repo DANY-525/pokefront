@@ -1,0 +1,20 @@
+.navigation-tab {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
