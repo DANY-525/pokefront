@@ -8,12 +8,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8080/auth/authenticate';
+  private endpointLogin = 'http://localhost:8080/auth/authenticate';
+  private endpointRegister = 'http://localhost:8080/auth/register';
 
   constructor(public http: HttpClient) { }
 
   login(credentials:any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, credentials);
+    return this.http.post<any>(`${this.endpointLogin}`, credentials);
+  }
+  register(register:any): Observable<any> {
+    return this.http.post<any>(`${this.endpointRegister}`, register);
   }
 
 }
