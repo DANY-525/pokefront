@@ -33,7 +33,19 @@ export class HomeComponent {
     this.router.navigate(['/details', id]);
    }
 
-   toggleHeart() {
+   toggleHeart(id:any) {
+    this.pokemones.addFavorites(id).subscribe(
+      response => {
+            console.log(response);
+      },
+      error => {
+
+        this.auth.clearToken();
+        this.router.navigate(['/']);
+        console.error('Token vencio:', error);
+        // Handle error (show message to user, etc.)
+      }
+    );
     this.heartActive = !this.heartActive;
   }
 
