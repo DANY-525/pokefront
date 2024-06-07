@@ -24,6 +24,9 @@ export class NavBarComponent {
     if(tab == "home"){
        this.router.navigate(['/home']);
     }
+    if(tab == "favorites"){
+      this.router.navigate(['/hearts']);
+   }
     this.activeTab = tab;
   }
 

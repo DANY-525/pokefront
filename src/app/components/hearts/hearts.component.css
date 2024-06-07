@@ -1,0 +1,28 @@
+.pokemon-list {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .pokemon-list h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .pokemon-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .pokemon-list li {
+    margin-bottom: 10px;
+  }
+  
+  .pokemon-list li a {
+    text-decoration: none;
+    color: #007bff; /* Blue color */
+  }
+  
+  .pokemon-list li a:hover {
+    text-decoration: underline;
+  }

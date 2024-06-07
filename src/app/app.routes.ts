@@ -5,9 +5,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
 import { AuthGuard } from './guards/AuthGuards';
+import { HeartsComponent } from './components/hearts/hearts.component';
 export const routes: Routes = [
     {path:'',component:LoginComponent},
     {path:'register',component:RegisterComponent},
+    {path:'hearts',component:HeartsComponent,canActivate: [AuthGuard]},
     {path:'home',component:HomeComponent,canActivate: [AuthGuard]},
     {path:'details',component:PokemonDetailsComponent,canActivate: [AuthGuard]},
 

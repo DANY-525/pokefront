@@ -42,7 +42,7 @@ export class LoginService {
   
     }
 
-   /* getFavorites(): Observable<any> {
+    getFavorites(): Observable<any> {
       const token = localStorage.getItem('token');
        // Verifica si hay un token disponible
   
@@ -55,7 +55,7 @@ export class LoginService {
         
         return this.http.get<any>(`${this.addFavoritesUrl}`,{ headers: headers });
     
-      }*/
+      }
 
 
   

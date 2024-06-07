@@ -23,9 +23,6 @@ export class HomeComponent {
   displayedPokemons: any[] = [];
   currentPage = 1;
   pageSize = 10; 
- 
-
- 
   constructor(private pokemones: LoginService,private router:Router,private route: ActivatedRoute,private auth:AuthenticationServiceService) {
     this.getPokemones();
   }
