@@ -3,17 +3,18 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule aquí
 
 
-
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginService } from '../../service/login.service';
 import { credentials } from '../../entities/credentials';
+
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -25,7 +26,7 @@ export class LoginComponent {
   responseData: string = '';
 
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService,private router:Router,private route: ActivatedRoute) { }
   login() {
 
     const authenticationRequest: credentials = {
@@ -37,12 +38,13 @@ export class LoginComponent {
     response => {
        if(response.token){
             this.responseData = response.token;
+            this.router.navigate(['/home']);
        }else{
         this.responseData= "error "+response;
        }
     },
     error => {
-      this.responseData= "Datos malos "+error.error;
+      this.responseData= "Please review :"+error.error;
       console.error('Error during login:', error);
       // Handle error (show message to user, etc.)
     }

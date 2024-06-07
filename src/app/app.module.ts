@@ -6,6 +6,9 @@ import { LoginComponent } from './components/login/login.component';
 import { CommonModule } from '@angular/common';
 import { LoginService } from './service/login.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from 'express';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule
+
   ],
   exports:  [
     HttpClientModule,

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {register} from '../../entities/register';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent {
   email: string = '';
   responseData: string = '';
 
-  constructor(private registerService: LoginService) { }
+  constructor(private registerService: LoginService,private router:Router,private route: ActivatedRoute) { }
   register() {
     const authenticationRequest: register = {
       name: this.username,
@@ -32,12 +33,13 @@ export class RegisterComponent {
       response => {
          if(response.token){
               this.responseData = response.token;
+              this.router.navigate(['/home']);
          }else{
           this.responseData= "error "+response;
          }
       },
       error => {
-        this.responseData= "Datos malos "+error.error;
+        this.responseData= "Please review :"+error.error;
         console.error('Error during login:', error);
         // Handle error (show message to user, etc.)
       }
