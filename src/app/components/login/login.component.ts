@@ -7,6 +7,7 @@ import { LoginService } from '../../service/login.service';
 import { credentials } from '../../entities/credentials';
 
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AuthenticationServiceService } from '../../service/authentication-service.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class LoginComponent {
   responseData: string = '';
 
 
-  constructor(private loginService: LoginService,private router:Router,private route: ActivatedRoute) { }
+  constructor(private loginService: LoginService,private router:Router,private route: ActivatedRoute,private auth:AuthenticationServiceService) { }
   login() {
 
     const authenticationRequest: credentials = {
@@ -38,8 +39,10 @@ export class LoginComponent {
     response => {
        if(response.token){
             this.responseData = response.token;
-            sessionStorage.setItem("token",response.token);
+            this.auth.setToken(response.token)
             this.router.navigate(['/home']);
+           // sessionStorage.setItem("token",response.token);
+    
        }else{
         this.responseData= "error "+response;
        }

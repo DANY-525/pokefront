@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthenticationServiceService } from '../../service/authentication-service.service';
 
 @Component({
   selector: 'app-home',
@@ -22,20 +23,20 @@ export class HomeComponent {
   pageSize = 10; activeTab: string = 'home';
 
  
-  constructor(private pokemones: LoginService,private router:Router,private route: ActivatedRoute) {
-       
-
-      
+  constructor(private pokemones: LoginService,private router:Router,private route: ActivatedRoute,private auth:AuthenticationServiceService) {
     this.getPokemones();
-
+  }
+   detailPage(page:string){
+    this.router.navigate(['/details']);
    }
-
-
   setActiveTab(tab: string): void {
+    if(tab == "close"){
+        this.auth.clearToken();
+       this.router.navigate(['/']);
+    }
     this.activeTab = tab;
   }
-
-   getPokemones(){
+ getPokemones(){
 
         this.pokemones.getPokemon().subscribe(
           response => {
@@ -49,12 +50,11 @@ export class HomeComponent {
         );
 
    }
-
     getPokemonImageUrl(url: string): string {
     // La PokéAPI proporciona la imagen del Pokémon en un formato específico.
     // Puedes obtener la URL de la imagen concatenando la URL base con el número de Pokémon.
-    const pokemonId = this.getPokemonIdFromUrl(url);
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+      const pokemonId = this.getPokemonIdFromUrl(url);
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
     }
 
     getPokemonIdFromUrl(url: string): number {
@@ -82,7 +82,4 @@ export class HomeComponent {
       const endIndex = startIndex + this.pageSize;
       this.displayedPokemons = this.pokemonsList.slice(startIndex, endIndex);
     }
-  
-
-
 }

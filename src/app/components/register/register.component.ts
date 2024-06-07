@@ -3,6 +3,7 @@ import {register} from '../../entities/register';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationServiceService } from '../../service/authentication-service.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent {
   email: string = '';
   responseData: string = '';
 
-  constructor(private registerService: LoginService,private router:Router,private route: ActivatedRoute) { }
+  constructor(private registerService: LoginService,private router:Router,private route: ActivatedRoute,private auth:AuthenticationServiceService) { }
   register() {
     const authenticationRequest: register = {
       name: this.username,
@@ -33,6 +34,7 @@ export class RegisterComponent {
       response => {
          if(response.token){
               this.responseData = response.token;
+              this.auth.setToken(response.token)
               this.router.navigate(['/home']);
          }else{
           this.responseData= "error "+response;

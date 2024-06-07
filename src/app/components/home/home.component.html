@@ -10,11 +10,13 @@
 <div class="pokemon-list">
     <h2>List of Pokémon</h2>
     <ul>
-      <li *ngFor="let pokemon of displayedPokemons">
-        <img [src]="getPokemonImageUrl(pokemon.url)" alt="{{ pokemon.name }}">
-        <a [href]="pokemon.url" target="_blank">{{ pokemon.name }}</a>
-      </li>
-    </ul>
+        <li *ngFor="let pokemon of displayedPokemons">
+          <img [src]="getPokemonImageUrl(pokemon.url)" alt="{{ pokemon.name }}">
+          <button (click)="detailPage(pokemon.url)">{{ pokemon.name }}</button>
+      
+         
+        </li>
+      </ul>
     <div class="pagination">
       <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
       <button (click)="nextPage()" [disabled]="currentPage * pageSize >= pokemonsList.length">Next</button>
