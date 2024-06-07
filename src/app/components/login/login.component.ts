@@ -38,6 +38,7 @@ export class LoginComponent {
     response => {
        if(response.token){
             this.responseData = response.token;
+            sessionStorage.setItem("token",response.token);
             this.router.navigate(['/home']);
        }else{
         this.responseData= "error "+response;

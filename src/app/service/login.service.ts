@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class LoginService {
   private endpointLogin = 'http://localhost:8080/auth/authenticate';
   private endpointRegister = 'http://localhost:8080/auth/register';
+  private endpointPokemons = "https://pokeapi.co/api/v2/pokemon";
 
   constructor(public http: HttpClient) { }
 
@@ -19,5 +20,7 @@ export class LoginService {
   register(register:any): Observable<any> {
     return this.http.post<any>(`${this.endpointRegister}`, register);
   }
-
+  getPokemon(): Observable<any> {
+    return this.http.get<any>(`${this.endpointPokemons}`);
+  }
 }

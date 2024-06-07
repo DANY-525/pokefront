@@ -1,1 +1,22 @@
-<p>home works!</p>
+
+
+<div class="navigation-tab">
+  <button class="tab" [class.active]="activeTab === 'home'" (click)="setActiveTab('home')">Home</button>
+  <button class="tab" [class.active]="activeTab === 'favorites'" (click)="setActiveTab('favorites')">Favorites</button>
+  <button class="tab" [class.active]="activeTab === 'close'" (click)="setActiveTab('close')">Close</button>
+</div>
+
+
+<div class="pokemon-list">
+    <h2>List of Pokémon</h2>
+    <ul>
+      <li *ngFor="let pokemon of displayedPokemons">
+        <img [src]="getPokemonImageUrl(pokemon.url)" alt="{{ pokemon.name }}">
+        <a [href]="pokemon.url" target="_blank">{{ pokemon.name }}</a>
+      </li>
+    </ul>
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      <button (click)="nextPage()" [disabled]="currentPage * pageSize >= pokemonsList.length">Next</button>
+    </div>
+  </div>
